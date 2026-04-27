@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FutureFinance AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<button onclick="toggleTheme()" id="themeBtn" class="theme-toggle">🌙</button>
+<!-- LOGIN -->
+<div id="loginPage" class="login">
+  <div class="login-box">
+    <h1>FutureFinance AI</h1>
+    <input id="username" name="nope" placeholder="Enter Name" autocomplete="off">
+    
+    <button onclick="login()">Enter</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app">
+
+<div class="header">
+  <h1>💰 FutureFinance AI</h1>
+  <p id="welcome"></p>
+</div>
+
+<div class="container">
+
+<!-- LEFT -->
+<div class="panel">
+
+<div class="card">
+<h3>Add Transaction</h3>
+
+<input id="desc" placeholder="Description">
+<input id="amount" type="number" placeholder="Amount">
+
+<select id="type">
+<option value="income">Income</option>
+<option value="expense">Expense</option>
+</select>
+
+<select id="category">
+<option>Food</option>
+<option>Travel</option>
+<option>Shopping</option>
+<option>Electric Bill</option>
+<option>Gas Bill</option>
+<option>Water Bill</option>
+<option>Tution Fees</option>
+<option>Medicine Cost</option>
+<option>Health Insurance</option>
+<option>Other</option>
+</select>
+
+<button onclick="addTransaction()">Add</button>
+</div>
+
+  <div class="card">
+  <h3>📜 History</h3>
+  <div id="history"></div>
+
+  <!-- NEW BUTTON -->
+  <button onclick="openHistoryPage()">📂 View Full History</button>
+</div>
+
+
+<div class="card">
+<h3>🎯 Goal</h3>
+<input id="goalInput" type="number">
+<button onclick="setGoal()">Set Goal</button>
+<p id="goalStatus"></p>
+<div class="progress"><div id="progressBar"></div></div>
+</div>
+
+<div class="card">
+<h3>📅 Monthly Summary</h3>
+<p id="monthly"></p>
+</div>
+
+</div>
+<!-- MAIN -->
+<div class="main">
+
+<div class="card"><h3>📊 Overview</h3><canvas id="chart"></canvas></div>
+
+<div class="card"><h3>📂 Category</h3><canvas id="categoryChart"></canvas></div>
+<div class="card"><h3>📈 Trend</h3><canvas id="lineChart"></canvas></div>
+<div class="card big-card">
+  <h3>🔮 Prediction</h3>
+  <canvas id="predictionChart"></canvas>
+
+
+</div>
+
+<!-- RIGHT -->
+<div class="panel">
+<div class="card">
+<h3>Summary</h3>
+<p>Balance: ₹<span id="balance">0</span></p>
+<p>Health Score: <span id="score">0</span>/100</p>
+<p>Risk Level: <span id="risk">0</span>%</p>
+<p>Profit %: <span id="profit">0</span>%</p>
+<button onclick="openAchievements()">🏆 Achievements</button>
+</div>
+
+</div>
+
+
+<div class="card">
+<h3>🤖 AI Advisor</h3>
+<div id="chatBox"></div>
+
+<div class="chat">
+<input id="chatInput">
+<button onclick="askAI()">Ask</button>
+</div>
+
+<button onclick="startVoice()">🎤 Voice Assistant</button>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

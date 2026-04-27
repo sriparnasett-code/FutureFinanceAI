@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Full History</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #020617;
+  color: white;
+}
+
+.container {
+  padding: 20px;
+}
+
+.card {
+  background: #486086;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.item {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.income { background: rgba(0,255,0,0.2); }
+.expense { background: rgba(255,0,0,0.2); }
+
+button {
+  margin-top: 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: cyan;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📜 Full Transaction History</h1>
+
+<div class="container">
+  <div class="card">
+    <div id="fullHistory"></div>
+  </div>
+</div>
+
+<script>
+let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+
+function loadHistory() {
+  let div = document.getElementById("fullHistory");
+
+  if (transactions.length === 0) {
+    div.innerHTML = "<p>No transactions found</p>";
+    return;
+  }
+
+  div.innerHTML = "";
+
+  transactions.forEach((t, index) => {
+    let typeClass = t.type === "income" ? "income" : "expense";
+
+    div.innerHTML += `
+      <div class="item ${typeClass}">
+        <b>${t.date}</b> - ${t.desc} ₹${t.amount} (${t.category})
+        <br>
+        <button onclick="deleteTransaction(${index})">Delete</button>
+      </div>
+    `;
+  });
+}
+
+function deleteTransaction(index) {
+  transactions.splice(index, 1);
+  localStorage.setItem("transactions", JSON.stringify(transactions));
+  loadHistory();
+}
+
+loadHistory();
+</script>
+
+</body>
+</html>

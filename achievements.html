@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title> Achievements</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #020617;
+  color: white;
+}
+
+.container {
+  padding: 20px;
+}
+
+.card {
+  background: #486086;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.achieved {
+  border-left: 5px solid lime;
+}
+
+.locked {
+  opacity: 0.5;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🏆 Your Achievements</h1>
+
+<div class="container" id="achievementsList"></div>
+
+<script>
+let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+
+function loadAchievements() {
+  let income = 0, expense = 0;
+
+  transactions.forEach(t => {
+    if (t.type === "income") income += t.amount;
+    else expense += t.amount;
+  });
+
+  let balance = income - expense;
+
+  let achievements = [
+    {
+      title: "💰 First Income",
+      condition: income > 0
+    },
+    {
+      title: "🧾 First Expense",
+      condition: expense > 0
+    },
+    {
+      title: "📊 10 Transactions",
+      condition: transactions.length >= 10
+    },
+    {
+      title: "💵 Saved ₹1000",
+      condition: balance >= 1000
+    },
+    {
+      title: "🏦 Saved ₹5000",
+      condition: balance >= 5000
+    },
+    {
+      title: "🧠 Smart Saver (Low Expense)",
+      condition: income > 0 && expense < income * 0.5
+    }
+  ];
+
+  let div = document.getElementById("achievementsList");
+  div.innerHTML = "";
+
+  achievements.forEach(a => {
+    let status = a.condition ? "achieved" : "locked";
+
+let icon = a.condition ? "✅" : "🔒";
+let text = a.condition ? "Unlocked" : "Locked";
+    div.innerHTML += `
+      <div class="card ${status}">
+        <h3>${icon} ${a.title}</h3>
+      </div>
+    `;
+  });
+}
+
+loadAchievements();
+</script>
+
+</body>
+</html>

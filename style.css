@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: white;
+}
+
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: #301d90;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.app { display: none; }
+
+.header {
+  text-align: center;
+  padding: 20px;
+  background: #4badbc;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.panel { width: 260px; }
+
+.main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #486086;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+input, select, button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+button {
+  background: cyan;
+  cursor: pointer;
+}
+
+#chatBox {
+  height: 200px;
+  overflow-y: auto;
+}
+
+.chat {
+  display: flex;
+  gap: 10px;
+}
+
+.progress {
+  width: 100%;
+  height: 10px;
+  background: #486086;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: cyan;
+}
+.achieved {
+  border-left: 6px solid lime;
+  background: rgba(0,255,0,0.15);
+}
+
+.locked {
+  opacity: 0.4;
+}
+
+.card p {
+  margin-top: 5px;
+  font-size: 14px;
+}
+.big-card {
+  grid-column: span 2; /* makes it wider */
+}
+
+#predictionChart {
+  height: 300px !important; /* increase height */
+}
+/* LIGHT MODE */
+.light-mode {
+  background: #f1f5f9;
+  color: black;
+}
+
+.light-mode .header {
+  background: #e2e8f0;
+}
+
+
+
+.theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: cyan;
+  color: black;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 999;
+}
