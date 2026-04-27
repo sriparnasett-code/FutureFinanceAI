@@ -65,5 +65,4 @@ FutureFinance AI is an effective and simple financial management tool that helps
 
 👨‍💻 10. Developer Details
 Project Name: FutureFinance AI
-Developed By: [Sriparna Sett & Sudipta Ghosh]
 Technology: HTML, CSS, JavaScript
